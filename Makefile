@@ -2,7 +2,7 @@ NAME =		fractol
 HEADERS =	fractol.h
 LIBRARYS =	mlx/libmlx.a
 
-G =			\033[38;2;0;255;0
+G =			\033[38;2;128;255;0
 
 INCLUDES =	./
 
