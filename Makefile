@@ -2,7 +2,8 @@ NAME =		fractol
 HEADERS =	fractol.h
 LIBRARYS =	mlx/libmlx.a
 
-G =			\033[38;2;128;255;0
+G =			\033[38;2;154;205;50
+W =			\033[38;2;255;255;255
 
 INCLUDES =	./
 
@@ -16,8 +17,10 @@ all:		$(NAME)
 
 $(NAME):	$(LIBRARYS) $(O_FILES)
 			@$(CC) $? $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME)
-			@echo "$(G);1mBLA ZAEBIS VSE NORM!!"
-			@echo "COMMAND + V"
+			@echo ""
+			@echo "$(G);1m wwwwwwwwww   DONE!  wwwwwwwwww"
+			@echo "$(W);1m PRESS  COMMAND + V  AND  ENJOY"
+			@echo "$(G);1m wwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
 			@printf %s ./$(NAME) | pbcopy
 
 $(LIBRARYS):
