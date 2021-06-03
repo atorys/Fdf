@@ -11,4 +11,4 @@ add_executable(fdf
         fdf.h
         mlx/mlx.h
         mlx/mlx_new_window.h
-        mlx/libmlx.a maparse/map_parsing.c main.c)
+        mlx/libmlx.a maparse/map_parsing.c main.c maparse/ft_split.c)

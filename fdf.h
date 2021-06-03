@@ -2,6 +2,9 @@
 #define FDF_H
 
 # include "mlx/mlx.h"
+# include <stdlib.h>
+# include "maparse/get_next_line.h"
+# include <fcntl.h>
 
 typedef struct	depth_and_color
 {
@@ -17,12 +20,12 @@ typedef struct	s_map_reading_parsing
 	void *mlx;
 	void *win;
 
-	int	ox;
-	int	oy;
+	int	x;
+	int	y;
 	dot	**z;
-}				map;
+}				maps;
 
-void	parse_me(void *map_fdf, map *map);
-
+void	parse_me(void *map_fdf, maps *map);
+char	**ft_split(char const *s, char c);
 
 #endif
