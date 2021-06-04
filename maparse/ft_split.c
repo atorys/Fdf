@@ -1,6 +1,7 @@
 #include "../fdf.h"
+#include "get_next_line.h"
 
-static unsigned int	ft_strcount(char const *s, char c)
+unsigned int	ft_strcount(char const *s, char c)
 {
 	unsigned int	count;
 	int				i;
@@ -10,7 +11,7 @@ static unsigned int	ft_strcount(char const *s, char c)
 	i = 0;
 	if (!ft_strchr(s, c))
 		return (1);
-	while (s[i])
+	while (s[i] != '\0')
 	{
 		k = 0;
 		while (s[i] != '\0' && s[i] == c)
@@ -41,9 +42,7 @@ static char	*writeln(char **array, char const *s, size_t k, unsigned int j)
 
 	line = ft_substr(s, j, k);
 	if (!line)
-	{
 		return (ft_free(array));
-	}
 	return (line);
 }
 
@@ -74,7 +73,7 @@ static char	**ft_writearray(char const *s, char c, char **array)
 
 char	**ft_split(char const *s, char c)
 {
-	char			**array;
+	char	**array;
 
 	if (!s)
 		return (NULL);

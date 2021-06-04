@@ -11,8 +11,9 @@ LIBRARYS =	mlx/libmlx.a
 #----------FILES
 FILES =		main.c \
 			map_parsing.c \
-			get_next_line.c
-			get_next_line_utils.c
+			get_next_line.c \
+			get_next_line_utils.c \
+			ft_split.c
 
 O_FILES =	$(FILES:.c=.o)
 
@@ -25,7 +26,7 @@ W =			\033[38;2;255;255;255
 #--------------------RULES-------------------------------/
 all:		$(NAME)
 
-$(NAME):	$(LIBRARYS) $(O_FILES) $(HEADERS)
+$(NAME):	$(LIBRARYS) $(O_FILES)
 			@$(CC) $? $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME)
 			@echo ""
 			@echo "$(G);1m wwwwwwwwww   DONE!  wwwwwwwwww"

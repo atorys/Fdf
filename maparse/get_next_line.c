@@ -74,7 +74,6 @@ int	get_next_line(int fd, char **line)
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) == -1 || line == NULL)
 		return (-1);
-
 	status = ft_findintail(line, &tail);
 	the_n = NULL;
 	while (!the_n && !status)
@@ -84,21 +83,4 @@ int	get_next_line(int fd, char **line)
 	if (status == 2)
 		return (0);
 	return (-1);
-	status = 0;
-	while (!tail || (!ft_strchr(tail, '\n')  && !status)) ///comment for check
-	{
-		bytes = read(fd, buffer, BUFFER_SIZE);
-		if (bytes < 0)
-			return (-1);
-		if (bytes == 0)
-		{
-			status = ft_cleantail(line, &tail);
-			return (status);
-		}
-		buffer[bytes] = '\0';
-		status = ft_writetotail(buffer, &tail);
-	}
-	if (ft_strchr(tail, '\n'))
-		status = ft_getfromtail(line, &tail);
-	return (status);
 }

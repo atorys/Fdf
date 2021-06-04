@@ -8,11 +8,8 @@
 
 typedef struct	depth_and_color
 {
-	float			depth;
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
-	unsigned char	a;
+	float	depth;
+	int 	color;
 }				dot;
 
 typedef struct	s_map_reading_parsing
@@ -25,7 +22,11 @@ typedef struct	s_map_reading_parsing
 	dot	**z;
 }				maps;
 
-void	parse_me(void *map_fdf, maps *map);
-char	**ft_split(char const *s, char c);
+void			error_case(void);
+int				parse_me(char *map_fdf, maps *map);
+char			**ft_split(char const *s, char c);
+unsigned int	ft_strcount(char const *s, char c);
+//int	atoi_base(char *base, int b, const char *str);
+//int multy(int b, int n);
 
 #endif
