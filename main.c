@@ -6,35 +6,76 @@ void	error_case(void)
 	exit(-1);
 }
 
+int	esc(maps *map)
+{
+	exit(0);
+	return (0);
+}
+
+int key_event(int key, maps *map)
+{
+	if (key == 53)
+		esc(map);
+	return (0);
+}
+
+void put_pixel(t_frame *image, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = image->addr + (y * image->line_length + x * (image->bpp / 8));
+	*(unsigned  int*)dst = color;
+}
+
 int main(int argc, char *argv[])
-//int main(void)
 {
 	maps	map;
-	char	*map_fdf;
-	int i = 0;
-	int j = 0;
+	t_frame	image;
+	int i;
+	int j;
 
 	if (argc > 2 || argc == 1)
-		return (-1);
-//	map_fdf = argv[1];
-//	map_fdf = "test_maps/42.fdf";
-//	parse_me(map_fdf, &map);
-//	map.mlx = mlx_init();
-//	map.win = mlx_new_window(map.mlx, 1920, 1640, "FDF");
+		error_case();
 	parse_me(argv[1], &map);
-	i = 0;
-	while (i < map.y)
+	map.mlx = mlx_init();
+	map.win = mlx_new_window(map.mlx, 1920, 1080, "FDF");
+
+	image.img = mlx_new_image(map.mlx, 1920, 1080);
+	image.addr = mlx_get_data_addr(image.img, &image.bpp, &image.line_length, &image.endian);
+
+	i = -1;
+	while (++i < map.y)
 	{
-		j = 0;
-		while (j < map.x)
+		j = -1;
+		while (++j < map.x)
 		{
-			printf("%3.0f,", map.z[i][j].depth);
-			printf("%d", map.z[i][j].color);
-			j++;
+			put_pixel(&image, i, j, map.z[i][j].color);
 		}
-		printf("\n");
-		i++;
 	}
+	mlx_put_image_to_window(map.mlx, map.win, image.img, 0, 0);
+
+	mlx_key_hook(map.win, key_event, &map);
+
+	mlx_hook(map.win, 2, 0, key_event, &map);
+	mlx_hook(map.win, 17, 0, esc, &map);
+
+	mlx_loop(map.mlx);
+
+//	i = 0;
+//	while (i < map.y)
+//	{
+//		j = 0;
+//		while (j < map.x)
+//		{
+//			printf("%2.0f,", map.z[i][j].depth);
+//			printf("%d", map.z[i][j].color);
+//			j++;
+//		}
+//		printf("\n");
+//		i++;
+//	}
+//	while (1)
+//		;
 //	printf("%d", atoi_base("0123456789abcdef", 16, "3b6e6618d7"));
 	return (1);
 }

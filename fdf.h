@@ -12,6 +12,15 @@ typedef struct	depth_and_color
 	int 	color;
 }				dot;
 
+typedef struct	s_frame
+{
+	void	*img;
+	char 	*addr;
+	int 	bpp;
+	int 	line_length;
+	int 	endian;
+}				t_frame;
+
 typedef struct	s_map_reading_parsing
 {
 	void *mlx;
@@ -23,10 +32,8 @@ typedef struct	s_map_reading_parsing
 }				maps;
 
 void			error_case(void);
-int				parse_me(char *map_fdf, maps *map);
+void			parse_me(char *map_fdf, maps *map);
 char			**ft_split(char const *s, char c);
 unsigned int	ft_strcount(char const *s, char c);
-//int	atoi_base(char *base, int b, const char *str);
-//int multy(int b, int n);
 
 #endif
