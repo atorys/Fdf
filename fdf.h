@@ -5,6 +5,7 @@
 # include <stdlib.h>
 # include "maparse/get_next_line.h"
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct	depth_and_color
 {
