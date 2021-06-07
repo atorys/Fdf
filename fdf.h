@@ -42,6 +42,10 @@ void			parse_me(char *map_fdf, maps *map);
 char			**ft_split(char const *s, char c);
 unsigned int	ft_strcount(char const *s, char c);
 
-void			render(t_frame *image, maps *map);
+//void			render(t_frame *image, maps *map);
+//void	draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map);
+
+void			render(maps *map);
+void			draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map);
 
 #endif

@@ -17,22 +17,21 @@ int key_event(int key, maps *map, t_frame *image)
 	if (key == 53)
 		esc(map);
 	if (key == 124)
-		map->move_x += 10;
+		map->move_x += 50;
 	if (key == 123)
-		map->move_x -= 10;
+		map->move_x -= 50;
 	if (key == 125)
-		map->move_y += 10;
+		map->move_y += 50;
 	if (key == 126)
-		map->move_y -= 10;
+		map->move_y -= 50;
 	if (key == 69)
-		map->scale += 10;
-	if (key == 79)
-		map->scale -= 10;
-	if (key > 122 && key < 127 || key == 69 || key == 79)
+		map->scale += 2;
+	if (key == 78)
+		map->scale -= 2;
+	if ((key > 122 && key < 127) || key == 69 || key == 78)
 	{
 		mlx_clear_window(map->mlx, map->win);
-		render(image, map);
-		mlx_put_image_to_window(map->mlx, map->win, image->img, 0, 0);
+		render(map);
 	}
 	return (0);
 }
@@ -40,7 +39,6 @@ int key_event(int key, maps *map, t_frame *image)
 int main(int argc, char *argv[])
 {
 	maps	map;
-	t_frame	image;
 
 	if (argc > 2 || argc == 1)
 		error_case();
@@ -48,13 +46,9 @@ int main(int argc, char *argv[])
 
 	map.mlx = mlx_init();
 	map.win = mlx_new_window(map.mlx, 1920, 1080, "FDF");
+	map.scale = 10;
 
-	image.img = mlx_new_image(map.mlx, 1920, 1080);
-	image.addr = mlx_get_data_addr(image.img, &image.bpp, &image.line_length, &image.endian);
-
-//	draw_line(&image, 300, 100, 900, 300, &map);
-	render(&image, &map);
-	mlx_put_image_to_window(map.mlx, map.win, image.img, 0, 0);
+	render(&map);
 
 	mlx_key_hook(map.win, key_event, &map);
 	mlx_hook(map.win, 2, 0, key_event, &map);
