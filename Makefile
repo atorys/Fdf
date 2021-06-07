@@ -2,7 +2,8 @@
 NAME =		fdf
 #------------------------SOURCES------------------------/
 INCLUDES =	./
-VPATH =		maparse
+VPATH =		maparse \
+			render
 
 HEADERS =	fdf.h \
 			get_next_line.h
@@ -11,6 +12,7 @@ LIBRARYS =	mlx/libmlx.a
 #----------FILES
 FILES =		main.c \
 			map_parsing.c \
+			map_drawing.c \
 			get_next_line.c \
 			get_next_line_utils.c \
 			ft_split.c

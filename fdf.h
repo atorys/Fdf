@@ -30,11 +30,18 @@ typedef struct	s_map_reading_parsing
 	int	x;
 	int	y;
 	dot	**z;
+
+	int	move_x;
+	int	move_y;
+	int scale;
 }				maps;
 
 void			error_case(void);
+
 void			parse_me(char *map_fdf, maps *map);
 char			**ft_split(char const *s, char c);
 unsigned int	ft_strcount(char const *s, char c);
+
+void			render(t_frame *image, maps *map);
 
 #endif
