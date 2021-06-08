@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 
 	map.mlx = mlx_init();
 	map.win = mlx_new_window(map.mlx, 1920, 1080, "FDF");
-	map.scale = 10;
+	map.scale = 1;
 
 	render(&map);
 

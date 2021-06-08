@@ -8,31 +8,31 @@ static void	put_pixel(t_frame *image, int x, int y, int color)
 	*(unsigned  int*)dst = color;
 }
 
+void tri_d(float *x, float *y, float z)
+{
+	*x = (*x - *y) * cos(0.8);
+	*y = (*x + *y) * sin(0.8) - z;
+}
+
 void	draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map)
 {
 	float a;
 	float b;
 	float max;
-//	int color = map->z[(int)y2][(int)x2].color;
+	float z1 = map->z[(int)y1][(int)x1].depth;
+	float z2 = map->z[(int)y2][(int)x2].depth;
+//	int color = 16777215;
+	int color = map->z[(int)y1][(int)x1].color;
 
-//	a = (y2 - y1) * (float)map->scale;
-//	b = (x2 - x1) * (float)map->scale;
-//	x1 *= (float)map->scale;
-//	y1 *= (float)map->scale;
-//	if (a * (float)(1 - (2 * (a < 0))) > b * (float)(1 - (2 * (b < 0))))
-//		max = a * (float)(1 - (2 * (a < 0)));
-//	else
-//		max = b * (float)(1 - (2 * (b < 0)));
-//	while ((int)(x1 - x2 * (float)map->scale) || (int)(y1 - y2 * (float)map->scale))
-//	{
-//		put_pixel(image, (int)x1, (int)y1, map->z[(int)y2][(int)x2].color); /** todo: x/y y/x? */
-//		x1 += b / max;
-//		y1 += a / max;
-//	}
 	x1 *= map->scale;
 	y1 *= map->scale;
 	x2 *= map->scale;
 	y2 *= map->scale;
+	z1 *= map->scale;
+	z2 *= map->scale;
+
+	tri_d(&x1, &y1, z1);
+	tri_d(&x2, &y2, z2);
 
 	x1 += map->move_x;
 	y1 += map->move_y;
@@ -41,13 +41,18 @@ void	draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map
 
 	a = (y2 - y1);
 	b = (x2 - x1);
+
 	if (a * (float)(1 - (2 * (a < 0))) > b * (float)(1 - (2 * (b < 0))))
-		max = a * (float)(1 - (2 * (a < 0)));
+		max = a * (1 - (2 * (a < 0)));
 	else
-		max = b * (float)(1 - (2 * (b < 0)));
-	while (((int)(x1 - x2) || (int)(y1 - y2)) && x1 < 1920 && y1 < 1080)
+		max = b * (1 - (2 * (b < 0)));
+
+
+	if (x1 < 0)
+		x1 = 0;
+	while (((int)(x1 - x2) || (int)(y1 - y2)) && x1 < 1920 && x1 >= 0 && y1 >= 0 && y1 < 1080)
 	{
-		put_pixel(image, (int)x1, (int)y1, 16777215); /** todo: x/y y/x? */
+		put_pixel(image, (int)x1, (int)y1, color); /** todo: x/y y/x? */
 		x1 += b / max;
 		y1 += a / max;
 	}
@@ -62,17 +67,19 @@ void	render(maps *map)
 
 	image.img = mlx_new_image(map->mlx, 1920, 1080);
 	image.addr = mlx_get_data_addr(image.img, &image.bpp, &image.line_length, &image.endian);
-	y = -1;
-	while (++y < map->y)
+	y = 0;
+	while (y < map->y)
 	{
-		x = -1;
-		while (++x < map->x)
+		x = 0;
+		while (x < map->x)
 		{
 			if (x < map->x - 1)
-				draw_line(&image, (float)y, (float)x, (float)y, (float)x + 1, map);
+				draw_line(&image, (float)x, (float)y, (float)x + 1, (float)y, map);
 			if (y < map->y - 1)
-				draw_line(&image, (float)y, (float)x, (float)y + 1, (float)x, map);
+				draw_line(&image, (float)x, (float)y, (float)x, (float)y + 1, map);
+			x++;
 		}
+		y++;
 	}
 	mlx_put_image_to_window(map->mlx, map->win, image.img, 0, 0);
 }
