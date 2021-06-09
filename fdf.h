@@ -24,16 +24,18 @@ typedef struct	s_frame
 
 typedef struct	s_map_reading_parsing
 {
-	void *mlx;
-	void *win;
+	void	*mlx;
+	void	*win;
 
-	int	x;
-	int	y;
-	dot	**z;
+	int		x;
+	int		y;
+	dot		**z;
 
-	int	move_x;
-	int	move_y;
-	int scale;
+	int		move_x;
+	int		move_y;
+	int		scale;
+	float	cos;
+	float	sin;
 }				maps;
 
 void			error_case(void);
