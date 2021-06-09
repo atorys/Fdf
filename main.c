@@ -38,6 +38,8 @@ int key_event(int key, maps *map, t_frame *image)
 		map->cos -= 0.2;
 		map->sin -= 0.2;
 	}
+//	if (key == 0)
+//		map->cos += 0.2;
 //	if (key == 2)
 //		map->cos -= 0.2;
 //	if (key == 13)
