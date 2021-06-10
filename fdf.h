@@ -34,8 +34,8 @@ typedef struct	s_map_reading_parsing
 	int		move_x;
 	int		move_y;
 	int		scale;
-	float	cos;
-	float	sin;
+	double	cos;
+	double	sin;
 }				maps;
 
 void			error_case(void);
@@ -43,9 +43,6 @@ void			error_case(void);
 void			parse_me(char *map_fdf, maps *map);
 char			**ft_split(char const *s, char c);
 unsigned int	ft_strcount(char const *s, char c);
-
-//void			render(t_frame *image, maps *map);
-//void	draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map);
 
 void			render(maps *map);
 void			draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map);

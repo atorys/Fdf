@@ -20,7 +20,7 @@ FILES =		main.c \
 O_FILES =	$(FILES:.c=.o)
 
 #-----ADDITIONAL
-CFLAGS =	#-Wall -Wextra -Werror -O3
+CFLAGS =	-Wall -Wextra -Werror -O3
 G =			\033[38;2;154;205;50
 W =			\033[38;2;255;255;255
 

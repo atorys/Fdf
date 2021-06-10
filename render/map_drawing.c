@@ -8,19 +8,39 @@ static void	put_pixel(t_frame *image, int x, int y, int color)
 	*(unsigned  int*)dst = color;
 }
 
-void tri_d(float *x, float *y, float z, maps *map)
+void	treat_values(float *x1, float *y1, float *x2, float *y2, maps *map)
 {
-	*x = (*x - *y) * cos((double)map->cos);
-	*y = (*x + *y) * sin((double)map->sin) - z;
+	float z1;
+	float z2;
+
+	z1 = map->z[(int)*y1][(int)*x1].depth;
+	z2 = map->z[(int)*y2][(int)*x2].depth;
+
+	*x1 *= (float)map->scale;
+	*y1 *= (float)map->scale;
+	*x2 *= (float)map->scale;
+	*y2 *= (float)map->scale;
+	z1 *= (float)map->scale / 2;
+	z2 *= (float)map->scale / 2;
+
+	*x1 = (*x1 - *y1) * cos(map->cos);
+	*y1 = (*x1 + *y1) * sin(map->sin) - z1;
+	*x2 = (*x2 - *y2) * cos(map->cos);
+	*y2 = (*x2 + *y2) * sin(map->sin) - z2;
+
+	*x1 += (float)map->move_x;
+	*y1 += (float)map->move_y;
+	*x2 += (float)map->move_x;
+	*y2 += (float)map->move_y;
 }
+
+
 
 void	draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map)
 {
 	float a;
 	float b;
 	float max;
-	float z1 = map->z[(int)y1][(int)x1].depth;
-	float z2 = map->z[(int)y2][(int)x2].depth;
 	int color = 16777215;
 
 	if (map->z[(int)y1][(int)x1].color != color)
@@ -28,21 +48,7 @@ void	draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map
 	else if (map->z[(int)y2][(int)x2].color != color)
 		color = map->z[(int)y2][(int)x2].color;
 
-	x1 *= map->scale;
-	y1 *= map->scale;
-	x2 *= map->scale;
-	y2 *= map->scale;
-	z1 *= map->scale / 8;
-	z2 *= map->scale / 8;
-
-	tri_d(&x1, &y1, z1, map);
-	tri_d(&x2, &y2, z2, map);
-
-	x1 += map->move_x;
-	y1 += map->move_y;
-	x2 += map->move_x;
-	y2 += map->move_y;
-
+	treat_values(&x1, &y1, &x2, &y2, map);
 
 	a = (y2 - y1);
 	b = (x2 - x1);
@@ -52,11 +58,23 @@ void	draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map
 	else
 		max = b * (1 - (2 * (b < 0)));
 
-	while (((int)(x1 - x2) || (int)(y1 - y2)) && x1 < 1920 && x1 >= 0 && y1 >= 0 && y1 < 1080)
+	if (map->scale > 0 && (x1 < 0 || y1 < 0))
 	{
-		put_pixel(image, (int)x1, (int)y1, color); /** todo: x/y y/x? */
-		x1 += b / max;
-		y1 += a / max;
+		while (((int)(x1 - x2) || (int)(y1 - y2)) && x2 < 1920 && x2 >= 0 && y2 >= 0 && y2 < 1080)
+		{
+			put_pixel(image, (int) x2, (int) y2, color);
+			x2 -= b / max;
+			y2 -= a / max;
+		}
+	}
+	else if (map->scale > 0 && (x1 >= 0 || y1 >= 0))
+	{
+		while (((int) (x1 - x2) || (int) (y1 - y2)) && x1 < 1920 && x1 >= 0 && y1 >= 0 && y1 < 1080)
+		{
+			put_pixel(image, (int) x1, (int) y1, color);
+			x1 += b / max;
+			y1 += a / max;
+		}
 	}
 }
 
