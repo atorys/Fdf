@@ -30,7 +30,7 @@ W =			\033[38;2;255;255;255
 #--------------------RULES-------------------------------/
 all:		$(NAME)
 
-$(NAME):	libs $(O_FILES)
+$(NAME):	libs $(O_FILES) $(LIBRARYS)
 			@$(CC) $(CFLAGS) $(O_FILES) $(LIBRARYS) -framework OpenGL -framework AppKit -o $(NAME)
 			@echo ""
 			@echo "$(G);1m wwwwwwwwww   DONE!  wwwwwwwwww"

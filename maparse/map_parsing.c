@@ -92,6 +92,8 @@ void	parse_me(char *map_fdf, t_maps *map)
 	char	*line;
 
 	fd = open(map_fdf, O_RDONLY);
+	if (fd < 0)
+		error_case();
 	map->y = 0;
 	map->x = 0;
 	while (get_next_line(fd, &line) > 0)
