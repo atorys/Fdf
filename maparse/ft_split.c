@@ -1,11 +1,11 @@
 #include "../fdf.h"
 #include "get_next_line.h"
 
-unsigned int	ft_strcount(char const *s, char c)
+int	ft_strcount(char const *s, char c)
 {
-	unsigned int	count;
-	int				i;
-	int				k;
+	int	count;
+	int	i;
+	int	k;
 
 	count = 0;
 	i = 0;
@@ -54,7 +54,7 @@ static char	**ft_writearray(char const *s, char c, char **array)
 
 	i = 0;
 	j = 0;
-	while (s[j] != '\0' && i < ft_strcount(s, c))
+	while (s[j] != '\0' && i < (unsigned int)ft_strcount(s, c))
 	{
 		k = 0;
 		while (s[j] != '\0' && s[j] == c)

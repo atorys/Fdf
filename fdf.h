@@ -1,5 +1,5 @@
 #ifndef FDF_H
-#define FDF_H
+# define FDF_H
 
 # include "mlx/mlx.h"
 # include <stdlib.h>
@@ -7,44 +7,56 @@
 # include <fcntl.h>
 # include <math.h>
 
-typedef struct	depth_and_color
+typedef struct s_line
+{
+	float	x1;
+	float	y1;
+	float	x2;
+	float	y2;
+	int		color;
+}				t_line;
+
+typedef struct s_depthandcolor
 {
 	float	depth;
-	int 	color;
-}				dot;
+	int		color;
+}				t_dot;
 
-typedef struct	s_frame
+typedef struct s_frame
 {
 	void	*img;
-	char 	*addr;
-	int 	bpp;
-	int 	line_length;
-	int 	endian;
+	char	*addr;
+	int		bpp;
+	int		length;
+	int		end;
 }				t_frame;
 
-typedef struct	s_map_reading_parsing
+typedef struct s_map_reading_parsing
 {
 	void	*mlx;
 	void	*win;
 
 	int		x;
 	int		y;
-	dot		**z;
+	t_dot	**z;
 
 	int		move_x;
 	int		move_y;
 	int		scale;
+	float	height;
 	double	cos;
 	double	sin;
-}				maps;
+}				t_maps;
 
-void			error_case(void);
+void	error_case(void);
 
-void			parse_me(char *map_fdf, maps *map);
-char			**ft_split(char const *s, char c);
-unsigned int	ft_strcount(char const *s, char c);
+void	parse_me(char *map_fdf, t_maps *map);
+char	**ft_split(char const *s, char c);
+int		ft_strcount(char const *s, char c);
 
-void			render(maps *map);
-void			draw_line(t_frame *image, float x1, float y1, float x2, float y2, maps *map);
+void	render(t_maps *map);
+void	put_pixel(t_frame *image, int x, int y, int color);
+void	treat_values(t_line *line, t_maps *map);
+float	ft_max(float a, float b);
 
 #endif

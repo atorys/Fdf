@@ -17,4 +17,4 @@ add_executable(fdf
         maparse/get_next_line.h
         maparse/get_next_line.c
         maparse/get_next_line_utils.c
-        render/map_drawing.c)
+        render/map_drawing.c render/drawing_utils.c)

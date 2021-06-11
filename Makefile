@@ -2,6 +2,7 @@
 NAME =		fdf
 #------------------------SOURCES------------------------/
 INCLUDES =	./
+
 VPATH =		maparse \
 			render
 
@@ -13,6 +14,7 @@ LIBRARYS =	mlx/libmlx.a
 FILES =		main.c \
 			map_parsing.c \
 			map_drawing.c \
+			drawing_utils.c \
 			get_next_line.c \
 			get_next_line_utils.c \
 			ft_split.c
@@ -28,15 +30,15 @@ W =			\033[38;2;255;255;255
 #--------------------RULES-------------------------------/
 all:		$(NAME)
 
-$(NAME):	$(LIBRARYS) $(O_FILES)
-			@$(CC) $? $(CFLAGS) -framework OpenGL -framework AppKit -o $(NAME)
+$(NAME):	libs $(O_FILES)
+			@$(CC) $(CFLAGS) $(O_FILES) $(LIBRARYS) -framework OpenGL -framework AppKit -o $(NAME)
 			@echo ""
 			@echo "$(G);1m wwwwwwwwww   DONE!  wwwwwwwwww"
 			@echo "$(W);1m PRESS COMMAND + V  AND ADD MAP"
 			@echo "$(G);1m wwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
 			@printf %s ./$(NAME) | pbcopy
 
-$(LIBRARYS):
+libs :
 			make -C mlx/
 
 %.o :		%.c $(HEADERS)
@@ -46,6 +48,7 @@ $(LIBRARYS):
 #-------CLEAN
 clean:
 			@rm -f $(O_FILES)
+			@make clean -C mlx/
 
 fclean:		clean
 			@rm -f $(NAME)

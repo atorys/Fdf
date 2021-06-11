@@ -33,7 +33,7 @@ static int	atoi_base(const char *base, int b, const char *str)
 	return (result);
 }
 
-void	devide_depth_color(char *value, maps *map, int i, int j)
+void	devide_depth_color(char *value, t_maps *map, int i, int j)
 {
 	char	*comma;
 	char	*temp;
@@ -61,7 +61,7 @@ void	devide_depth_color(char *value, maps *map, int i, int j)
 	free(temp);
 }
 
-static void	parse_values(char *map_fdf, maps *map)
+static void	parse_values(char *map_fdf, t_maps *map)
 {
 	int		fd;
 	int		i;
@@ -73,7 +73,7 @@ static void	parse_values(char *map_fdf, maps *map)
 	fd = open(map_fdf, O_RDONLY);
 	while (++i < map->y && get_next_line(fd, &line) > 0)
 	{
-		map->z[i] = (dot *)malloc(sizeof(dot) * (map->x + 1));
+		map->z[i] = (t_dot *)malloc(sizeof(t_dot) * (map->x + 1));
 		if (!map->z[i])
 			error_case();
 		values = ft_split(line, ' ');
@@ -86,7 +86,7 @@ static void	parse_values(char *map_fdf, maps *map)
 	close(fd);
 }
 
-void	parse_me(char *map_fdf, maps *map)
+void	parse_me(char *map_fdf, t_maps *map)
 {
 	int		fd;
 	char	*line;
@@ -97,12 +97,12 @@ void	parse_me(char *map_fdf, maps *map)
 	while (get_next_line(fd, &line) > 0)
 	{
 		map->y++;
-		map->x = (int)ft_strcount(line, ' ');
+		map->x = ft_strcount(line, ' ');
 		free(line);
 	}
 	free(line);
 	close(fd);
-	map->z = (dot **)malloc(sizeof(dot *) * (map->y + 1));
+	map->z = (t_dot **)malloc(sizeof(t_dot *) * (map->y + 1));
 	if (!map->z)
 		error_case();
 	parse_values(map_fdf, map);
