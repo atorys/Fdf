@@ -8,4 +8,4 @@ Landscape isometric projection using miniLibX library. Norminette codestyle by 4
 
 ![test_maps/plat.fdf](heart.gif width:960 height:540) ![test_maps/t1.fdf](t1.gif width:960 height:540)
 
-<img src="heart.gif" width="960" height="540"/> <img src="t1.gif" width="960" height="540"/>
+<img src="heart.gif" width="480" height="270"/> <img src="t1.gif" width="480" height="270"/>
