@@ -14,17 +14,27 @@ static int	esc(void)
 static void	more_key_event(int key, t_maps *map)
 {
 	if (key == 69)
-		map->height += (float)0.2;
+		map->height += (float)0.1;
 	if (key == 78)
-		map->height -= (float)0.2;
+		map->height -= (float)0.1;
+//	if (key == 123)
+//		map->cos += 0.2;
+//	if (key == 124)
+//		map->cos -= 0.2;
+//	if (key == 126)
+//		map->sin += 0.2;
+//	if (key == 125)
+//		map->sin -= 0.2;
 	if (key == 123)
+	{
 		map->cos += 0.2;
-	if (key == 124)
-		map->cos -= 0.2;
-	if (key == 126)
 		map->sin += 0.2;
-	if (key == 125)
+	}
+	if (key == 124)
+	{
+		map->cos -= 0.2;
 		map->sin -= 0.2;
+	}
 }
 
 int	key_event(int key, t_maps *map)
@@ -40,9 +50,9 @@ int	key_event(int key, t_maps *map)
 	if (key == 13)
 		map->move_y += 50;
 	if (key == 24)
-		map->scale += 4;
+		map->scale += 1;
 	if (key == 27)
-		map->scale -= 4;
+		map->scale -= 1;
 	if (key == 69 || key == 78 || (key >= 123 && key <= 126))
 		more_key_event(key, map);
 	mlx_clear_window(map->mlx, map->win);
@@ -61,7 +71,7 @@ int	main(int argc, char *argv[])
 	if (!map.mlx)
 		error_case();
 	map.win = mlx_new_window(map.mlx, 1920, 1080, "FDF");
-	map.scale = 1;
+	map.scale = 2;
 	map.height = 1;
 	map.move_x = 1920 / 2;
 	map.move_y = 1080 / 4;

@@ -39,8 +39,9 @@ static void	draw_line(t_frame *image, t_line line, t_maps *map)
 	treat_values(&line, map);
 	a = (line.y2 - line.y1);
 	b = (line.x2 - line.x1);
-	if (map->scale > 0)
-		drawing(image, line, a, b);
+	if (map->scale < 2)
+		map->scale = 2;
+	drawing(image, line, a, b);
 }
 
 static void	process_dot(t_frame img, int x, int y, t_maps *map)
