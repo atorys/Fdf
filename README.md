@@ -1,17 +1,7 @@
 # Fdf
 Landscape isometric projection using miniLibX library. Norminette codestyle by 42 School
-<style>
-.one {
-  width: 60%;
-  float: left; 
-  margin: 0 1em 1em 0; 
- }
-.two {
-  float: left; 
-  margin: 0 1em 1em 0; 
-  }
-</style>
-<div class="one">
+
+<div class="one" align="left">
   <img src="gifs/mars_square.gif"/>
 </div>
 <div class="two">
