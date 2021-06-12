@@ -1,7 +1,7 @@
 # Fdf
 Landscape isometric projection using miniLibX library. Norminette codestyle by 42 School
 <div>
-    <table bordercolor="white" border="111111">
+    <table rules="none">
     <tr>
     <td><img src="gifs/mars_square.gif"/></td>
     <td><div><img src="gifs/heart_square.gif" width=50% height=50%/></div>
