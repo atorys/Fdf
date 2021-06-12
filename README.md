@@ -1,4 +1,6 @@
 # Fdf
 Landscape isometric projection using miniLibX library. Norminette codestyle by 42 School
 
-![](heart.gif)
+<p align="right">
+  <img src="heart.gif" width="640" height="480" />
+</p>
