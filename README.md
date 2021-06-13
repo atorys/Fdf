@@ -5,7 +5,7 @@ relief landscape with miniLibX library. Norminette codestyle.
     <table cellpadding="60" bordercolor="white">
       <tr>
           <td  bgcolor="#000000">
-                <img src="gifs/mars_square.gif" align="right" width=105% height=105%/>
+                <img src="gifs/mars_square.gif" align="right" width=120% height=120%/>
           </td>
           <td>
               <div>
