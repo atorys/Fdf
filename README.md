@@ -12,7 +12,7 @@ git clone https://github.com/AchioteTory/Fdf.git
     <table cellpadding="60" bordercolor="white">
       <tr>
           <td>
-                <img src="gifs/mars_square.gif" align="right" width=120% height=100%/>
+                <img src="gifs/mars_square.gif" align="right" width=100% height=100%/>
           </td>
           <td>
               <div>
