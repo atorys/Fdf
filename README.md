@@ -3,21 +3,11 @@
 relief landscape with miniLibX library. Norminette codestyle. 
 [**subject.pdf**](fdf_subject.pdf)
 
-## Cloning
-```
-git clone https://github.com/AchioteTory/Fdf.git
-```
-
-
-## Run
-```
-./fdf test_maps/<name.fdf>
-```
 <div>
     <table cellpadding="60" bordercolor="white">
       <tr>
           <td>
-                <img src="gifs/mars_square.gif" align="right" width=100% height=100%/>
+                <img src="gifs/mars_square.gif" align="right"/>
           </td>
           <td>
               <div>
@@ -30,3 +20,13 @@ git clone https://github.com/AchioteTory/Fdf.git
         </tr>
     </table>
 </div>
+
+## Cloning
+```
+git clone https://github.com/AchioteTory/Fdf.git
+```
+
+## Run
+```
+./fdf test_maps/<name.fdf>
+```
