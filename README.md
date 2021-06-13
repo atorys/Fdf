@@ -3,22 +3,22 @@
 relief landscape with miniLibX library. Norminette codestyle. [subject.pdf](fdf_subject.pdf)
 
 ## Cloning
-''' 
+```
 git clone https://github.com/AchioteTory/Fdf.git
-'''
+```
 
 <div>
     <table cellpadding="60" bordercolor="white">
       <tr>
           <td>
-                <img src="gifs/mars_square.gif" align="right" width=120% height=120%   bgcolor="#000000"/>
+                <img src="gifs/mars_square.gif" align="right" width=100% height=120%/>
           </td>
           <td>
               <div>
-                  <img src="gifs/heart_square.gif" bordercolor="white" width=55% height=55%   bgcolor="#000000"/>
+                  <img src="gifs/heart_square.gif" bordercolor="white" width=55% height=55%/>
               </div>
               <div>
-                  <img src="gifs/t1_square.gif"  width=50% height=50%/>
+                  <img src="gifs/t1_square.gif"  width=55% height=55%/>
               </div>
           </td>
         </tr>
