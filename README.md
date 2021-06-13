@@ -4,7 +4,7 @@ Landscape isometric projection using miniLibX library. Norminette codestyle by 4
     <table cellpadding="0" bordercolor="white">
       <tr>
           <td>
-                <img src="gifs/mars_square.gif"/>
+                <img src="gifs/mars_square.gif" bgcolor="black"/>
           </td>
           <td>
               <div>
