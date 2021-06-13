@@ -28,5 +28,7 @@ git clone https://github.com/AchioteTory/Fdf.git
 
 ## Run
 ```
+make
+
 ./fdf test_maps/<name.fdf>
 ```
