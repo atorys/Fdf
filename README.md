@@ -1,6 +1,7 @@
 # Fdf
 42 School project FDF: creating isometric representation of a
-relief landscape with miniLibX library. Norminette codestyle. [subject.pdf](fdf_subject.pdf)
+relief landscape with miniLibX library. Norminette codestyle. 
+[**subject.pdf**](fdf_subject.pdf)
 
 ## Cloning
 ```
@@ -11,7 +12,7 @@ git clone https://github.com/AchioteTory/Fdf.git
     <table cellpadding="60" bordercolor="white">
       <tr>
           <td>
-                <img src="gifs/mars_square.gif" align="right" width=100% height=120%/>
+                <img src="gifs/mars_square.gif" align="right" width=120% height=100%/>
           </td>
           <td>
               <div>
