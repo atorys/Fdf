@@ -2,7 +2,7 @@
 42 School project FDF: creating isometric representation of a
 relief landscape with miniLibX library. Norminette codestyle.
 <div>
-    <table cellpadding="20" bordercolor="white">
+    <table cellpadding="60" bordercolor="white">
       <tr>
           <td  bgcolor="#000000">
                 <img src="gifs/mars_square.gif" align="right"/>
