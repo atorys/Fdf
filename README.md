@@ -9,7 +9,7 @@ relief landscape with miniLibX library. Norminette codestyle.
           </td>
           <td>
               <div>
-                  <img src="gifs/heart_square.gif" bordercolor="white" width=50% height=50%/>
+                  <img src="gifs/heart_square.gif" bordercolor="white" width=50% height=50% align="left"/>
               </div>
               <div>
                   <img src="gifs/t1_square.gif"  width=50% height=50%/>
